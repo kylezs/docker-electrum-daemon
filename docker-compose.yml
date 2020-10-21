@@ -1,11 +1,21 @@
-version: '3'
+version: "3"
 
 services:
   electrum:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Start the container as electrum user
+        ELECTRUM_USER: bitcoinrpc
+        ELECTRUM_PASSWORD: Password123
+        ELECTRUM_VERSION: 4.0.3
+        TESTNET: "true"
     ports:
-      - 127.0.0.1:7000:7000
-    environment:
-      ELECTRUM_USER: electrum
-      ELECTRUM_PASSWORD: changeme
-      TESTNET: False
+      # bind only localhost to the port for security
+      - 127.0.0.1:7777:7777
+    # environment:
+    #   - ELECTRUM_USER=bitcoinrpc
+    #   - ELECTRUM_PASSWORD=Password123
+    #   - ELECTRUM_VERSION=4.0.3
+    #   - TESTNET="false"
