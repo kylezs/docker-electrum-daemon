@@ -2,6 +2,7 @@ version: "3"
 
 services:
   electrum:
+    image: kylezs/electrum-client
     build:
       context: .
       dockerfile: Dockerfile

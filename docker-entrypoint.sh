@@ -5,7 +5,7 @@ set -ex
 trap 'pkill -TERM -P1; electrum daemon stop; exit 0' SIGTERM
 
 # Testnet support
-if [ ${TESTNET} = true ]; then
+if [[ $TESTNET = true ]]; then
   FLAGS='--testnet'
 fi
 
